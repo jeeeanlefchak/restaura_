@@ -1,0 +1,24 @@
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyAG9CvIX9SDfF0P6DQ77vHdPCJN9sH_vUc",
+    authDomain: "restaura-res.firebaseapp.com",
+    databaseURL: "https://restaura-res.firebaseio.com",
+    projectId: "restaura-res",
+    storageBucket: "restaura-res.appspot.com",
+    messagingSenderId: "127229625839",
+    appId: "1:127229625839:web:61c37d08bcfb427b"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
+
+
+
+https://www.youtube.com/watch?v=H20l9ofyR54
