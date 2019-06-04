@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AngularFireModule } from 'angularfire2';
 import { environment } from 'src/environments/environment';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { ProdutoModule } from './pages/produto/produto.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,7 +21,8 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
     IonicModule.forRoot(), 
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    ProdutoModule
   ],
   providers: [
     StatusBar,

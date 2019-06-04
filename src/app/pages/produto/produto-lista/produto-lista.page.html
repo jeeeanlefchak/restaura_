@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons>
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>todoDetails</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list lines="full">
+    <ion-item>
+      <ion-input required type="text" placeholder="Descricao" [(ngModel)]="produto.descricao"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input required type="text" placeholder="Nome" [(ngModel)]="produto.nome"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input required type="text" placeholder="categoria id" [(ngModel)]="produto.idCategoria"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input required type="text" placeholder="valor" [(ngModel)]="produto.valor"></ion-input>
+    </ion-item>
+    <ion-button expand="full" (click)="save()">save</ion-button>
+  </ion-list>
+</ion-content>
