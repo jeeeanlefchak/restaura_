@@ -28,7 +28,7 @@ export class ProdutoService {
     )
   }
 
-  getProdutos() {
+  getProdutos(): Observable<Produto[]> {
     return this.produto;
   }
 

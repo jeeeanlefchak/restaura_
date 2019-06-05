@@ -1,6 +1,6 @@
 import { Component, OnInit, NgModule } from '@angular/core';
-import { ProdutoService } from 'src/app/services/todo.service';
-import { ActivatedRoute } from '@angular/router';
+import { ProdutoService } from 'src/app/services/produto.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NavController, IonicModule } from '@ionic/angular';
 import { Produto } from 'src/app/models/produto';
 import { CommonModule } from '@angular/common';
@@ -13,43 +13,26 @@ import { FormsModule } from '@angular/forms';
 })
 
 export class ProdutoListaPage implements OnInit {
-  produto: Produto = new Produto();
+  produtos: Produto[] = [];
 
-  produtoId = 0;
-
-  constructor(private produtSerivce: ProdutoService,
-    private router: ActivatedRoute, private nav: NavController) { }
+  constructor(private produtSerivce: ProdutoService, private router: Router) { }
 
   ngOnInit() {
-    this.produtoId = this.router.snapshot.params['id'];
-    if (this.produtoId) {
-      this.get();
-    }
+    this.getAllProduct();
   }
 
-  get() {
-    this.produtSerivce.getProduto(this.produtoId).subscribe(res => {
-      this.produto = res;
-    })
+  getAllProduct() {
+    this.produtSerivce.getProdutos().subscribe(res => {
+      this.produtos = res;
+    });
+  }
+  remove(produtoId: number) {
+    this.produtSerivce.removeProduto(produtoId);
   }
 
-  save() {
-    if (this.produtoId) {
-      this.produtSerivce.updateProduto(this.produto, this.produtoId).then(() => {
-        this.nav.back();
-      });
-    } else {
-      this.produtSerivce.addProduto(this.produto).then(() => {
-        this.nav.back();
-      })
-    }
-
+  openPage(url) {
+    this.router.navigateByUrl(url);
   }
-
-  remove() {
-    this.produtSerivce.removeProduto(this.produto);
-  }
-
 
 }
 
@@ -62,7 +45,7 @@ export class ProdutoListaPage implements OnInit {
   declarations: [
     ProdutoListaPage
   ],
-  exports:[
+  exports: [
     ProdutoListaPage
   ]
 })

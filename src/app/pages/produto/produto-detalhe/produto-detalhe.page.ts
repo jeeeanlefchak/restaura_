@@ -1,5 +1,5 @@
 import { Component, OnInit, NgModule } from '@angular/core';
-import { ProdutoService } from 'src/app/services/todo.service';
+import { ProdutoService } from 'src/app/services/produto.service';
 import { ActivatedRoute } from '@angular/router';
 import { NavController, IonicModule } from '@ionic/angular';
 import { Produto } from 'src/app/models/produto';

@@ -3,24 +3,31 @@
     <ion-buttons>
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>todoDetails</ion-title>
+    <ion-title>Produtos</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list lines="full">
-    <ion-item>
-      <ion-input required type="text" placeholder="Descricao" [(ngModel)]="produto.descricao"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input required type="text" placeholder="Nome" [(ngModel)]="produto.nome"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input required type="text" placeholder="categoria id" [(ngModel)]="produto.idCategoria"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input required type="text" placeholder="valor" [(ngModel)]="produto.valor"></ion-input>
-    </ion-item>
-    <ion-button expand="full" (click)="save()">save</ion-button>
+  <ion-list>
+    <ion-item-sliding *ngFor="let item of produtos">
+      <ion-item lines="inset" button (click)="openPage('/'+ item.id)">
+        <ion-label>
+          {{item.nome}}
+        </ion-label>
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option (click)="remove(item.id)" color="secundary">
+          Excluir
+          <ion-icon name="checkmark" slot="end"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
   </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="openPage('new')" routerDirection="forward">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
