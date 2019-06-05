@@ -26,6 +26,7 @@ export class CategoriaListaPage implements OnInit {
       this.categorias = res;
     });
   }
+  
   remove(categoriaId: number) {
     this.produtSerivce.removeCategoria(categoriaId);
   }

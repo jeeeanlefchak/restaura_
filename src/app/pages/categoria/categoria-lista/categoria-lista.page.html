@@ -3,13 +3,13 @@
     <ion-buttons>
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>Produtos</ion-title>
+    <ion-title>Categorias</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <!-- <ion-list>
-    <ion-item-sliding *ngFor="let item of produtos">
+  <ion-list>
+    <ion-item-sliding *ngFor="let item of categorias">
       <ion-item lines="inset" button (click)="openPage('/'+ item.id)">
         <ion-label>
           {{item.nome}}
@@ -26,8 +26,8 @@
   </ion-list>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button (click)="openPage('new')" routerDirection="forward">
+    <ion-fab-button (click)="openPage('categoria/new')" routerDirection="forward">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
-  </ion-fab> -->
+  </ion-fab>
 </ion-content>

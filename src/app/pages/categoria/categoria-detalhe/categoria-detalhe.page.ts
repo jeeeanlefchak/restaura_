@@ -14,7 +14,6 @@ import { FormsModule } from '@angular/forms';
 
 export class CategoriaDetalhePage implements OnInit {
   categoria: Categoria = new Categoria();
-
   categoriaId = 0;
 
   constructor(private produtSerivce: CategoriaService,

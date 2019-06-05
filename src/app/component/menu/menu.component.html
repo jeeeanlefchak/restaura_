@@ -1,0 +1,14 @@
+<ion-menu id="menu" side="start" menuId="menuHome" contentId="menuHome">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-item (click)="navigate('categoria')">Categorias</ion-item>
+      <ion-item (click)="navigate('produtos')">Produtos</ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+<ion-router-outlet id="menuHome"></ion-router-outlet>

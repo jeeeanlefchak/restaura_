@@ -1,10 +1,8 @@
 import { Component, OnInit, NgModule } from '@angular/core';
-import { ProdutoService } from 'src/app/services/produto.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { NavController, IonicModule } from '@ionic/angular';
-import { Produto } from 'src/app/models/produto';
+import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { MenuComponentModule } from 'src/app/component/menu/menu.component';
 
 @Component({
   selector: 'app-HomePage',
@@ -27,6 +25,7 @@ export class HomePage implements OnInit {
     CommonModule,
     FormsModule,
     IonicModule,
+    MenuComponentModule
   ],
   declarations: [
     HomePage
