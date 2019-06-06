@@ -36,12 +36,12 @@ export class CategoriaService {
     return this.categoriasCollection.doc<Categoria>(id).valueChanges();
   }
 
-  updateCategoria(Categoria: Categoria, id) {
-    return this.categoriasCollection.doc(id).update(Categoria);
+  updateCategoria(categoria: Categoria, id) {
+    return this.categoriasCollection.doc(id).update(categoria);
   }
 
-  addCategoria(Categoria: Categoria) {
-    return this.categoriasCollection.add(Categoria);
+  addCategoria(categoria: Categoria) {
+    return this.categoriasCollection.add({ ...categoria });
   }
 
   removeCategoria(id) {

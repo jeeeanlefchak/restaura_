@@ -6,7 +6,7 @@ import { CategoriaDetalhePage } from './categoria-detalhe/categoria-detalhe.page
 
 const routes: Routes = [
   { path: '', component: CategoriaListaPage },
-  { path: ':id', component: CategoriaDetalhePage },
+  { path: 'edit/:id', component: CategoriaDetalhePage },
   { path: 'new', component: CategoriaDetalhePage },
 ];
 

@@ -36,12 +36,12 @@ export class ProdutoService {
     return this.produtosCollection.doc<Produto>(id).valueChanges();
   }
 
-  updateProduto(Produto: Produto, id) {
-    return this.produtosCollection.doc(id).update(Produto);
+  updateProduto(produto: Produto, id) {
+    return this.produtosCollection.doc(id).update(produto);
   }
 
-  addProduto(Produto: Produto) {
-    return this.produtosCollection.add(Produto);
+  addProduto(produto: Produto) {
+    return this.produtosCollection.add(produto);
   }
 
   removeProduto(id) {

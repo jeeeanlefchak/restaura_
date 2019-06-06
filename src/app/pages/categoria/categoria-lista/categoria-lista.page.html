@@ -10,7 +10,7 @@
 <ion-content>
   <ion-list>
     <ion-item-sliding *ngFor="let item of categorias">
-      <ion-item lines="inset" button (click)="openPage('/'+ item.id)">
+      <ion-item lines="inset" button (click)="openPage('categoria/edit/'+ item.id)">
         <ion-label>
           {{item.nome}}
         </ion-label>

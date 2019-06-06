@@ -5,6 +5,8 @@ import { NavController, IonicModule } from '@ionic/angular';
 import { Produto } from 'src/app/models/produto';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { CategoriaService } from 'src/app/services/categoria.service';
+import { Categoria } from 'src/app/models/categoria';
 
 @Component({
   selector: 'app-produto-detalhe',
@@ -14,17 +16,26 @@ import { FormsModule } from '@angular/forms';
 
 export class ProdutoDetalhePage implements OnInit {
   produto: Produto = new Produto();
-
+  categorias: Categoria[] = [];
   produtoId = 0;
 
   constructor(private produtSerivce: ProdutoService,
-    private router: ActivatedRoute, private nav: NavController) { }
+    private router: ActivatedRoute, private nav: NavController, private categoriaService: CategoriaService) { }
 
   ngOnInit() {
     this.produtoId = this.router.snapshot.params['id'];
     if (this.produtoId) {
       this.get();
     }
+    this.getCategories();
+  }
+
+  private getCategories() {
+    this.categoriaService.getCategorias().subscribe((categorias: Categoria[]) => {
+      this.categorias = categorias.sort((a: Categoria, b: Categoria) => {
+        return a.nome > b.nome ? -1 : 1;
+      });
+    })
   }
 
   get() {
@@ -60,7 +71,7 @@ export class ProdutoDetalhePage implements OnInit {
   declarations: [
     ProdutoDetalhePage
   ],
-  exports:[
+  exports: [
     ProdutoDetalhePage
   ]
 })

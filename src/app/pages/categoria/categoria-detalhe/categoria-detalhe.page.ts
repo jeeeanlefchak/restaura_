@@ -38,6 +38,7 @@ export class CategoriaDetalhePage implements OnInit {
         this.nav.back();
       });
     } else {
+      
       this.produtSerivce.addCategoria(this.categoria).then(() => {
         this.nav.back();
       })
