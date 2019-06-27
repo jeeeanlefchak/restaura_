@@ -10,16 +10,24 @@
 <ion-content>
   <ion-list lines="full">
     <ion-item>
-      <ion-input required type="text" placeholder="Descricao" [(ngModel)]="produto.descricao"></ion-input>
+      <ion-label>Descrição</ion-label>
+      <ion-input required type="text" [(ngModel)]="produto.descricao"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input required type="text" placeholder="Nome" [(ngModel)]="produto.nome"></ion-input>
+      <ion-label>Nome</ion-label>
+      <ion-input required type="text" [(ngModel)]="produto.nome"></ion-input>
     </ion-item>
     <ion-item>
-      <!-- <ion-input required type="text" placeholder="categoria id" [(ngModel)]="produto.categoria"></ion-input> -->
+      <ion-label>Categoria</ion-label>
+      <ion-select mode="ios" okText="Ok" cancelText="Dismiss" [(ngModel)]="categoria"
+        (ionChange)="changeCategoria($event)">
+        <ion-select-option [value]="categoria" *ngFor="let categoria of categorias">{{categoria?.nome}}
+        </ion-select-option>
+      </ion-select>
     </ion-item>
     <ion-item>
-      <ion-input required type="text" placeholder="valor" [(ngModel)]="produto.valor"></ion-input>
+      <ion-label>Valor</ion-label>
+      <ion-input required type="number" [(ngModel)]="produto.valor"></ion-input>
     </ion-item>
     <ion-button expand="full" (click)="save()">save</ion-button>
   </ion-list>

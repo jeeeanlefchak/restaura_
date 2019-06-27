@@ -5,6 +5,6 @@ export class Produto extends Abstract {
   nome: string;
   valor: number;
   descricao: string;
-  ategoriaId: number;
+  categoriaId: number;
   categoria: Categoria;
 }

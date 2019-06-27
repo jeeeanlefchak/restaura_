@@ -15,20 +15,21 @@ import { FormsModule } from '@angular/forms';
 export class CategoriaListaPage implements OnInit {
   categorias: Categoria[] = [];
 
-  constructor(private produtSerivce: CategoriaService, private router: Router) { }
+  constructor(private categoriaService: CategoriaService, private router: Router) { }
 
   ngOnInit() {
-    this.getAllProduct();
+    console.log('Categoria')
+    this.getAllCategoria();
   }
 
-  getAllProduct() {
-    this.produtSerivce.getCategorias().subscribe(res => {
+  getAllCategoria() {
+    this.categoriaService.getCategorias().subscribe(res => {
       this.categorias = res;
     });
   }
-  
+
   remove(categoriaId: number) {
-    this.produtSerivce.removeCategoria(categoriaId);
+    this.categoriaService.removeCategoria(categoriaId);
   }
 
   openPage(url) {

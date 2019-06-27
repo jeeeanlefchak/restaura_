@@ -18,7 +18,7 @@ export class ProdutoDetalhePage implements OnInit {
   produto: Produto = new Produto();
   categorias: Categoria[] = [];
   produtoId = 0;
-
+  categoria: Categoria = new Categoria();
   constructor(private produtSerivce: ProdutoService,
     private router: ActivatedRoute, private nav: NavController, private categoriaService: CategoriaService) { }
 
@@ -55,6 +55,10 @@ export class ProdutoDetalhePage implements OnInit {
       })
     }
 
+  }
+
+  changeCategoria($event) {
+    this.produto.categoriaId = this.categoria.id;
   }
 
   remove() {
