@@ -41,7 +41,7 @@ export class ProdutoService {
   }
 
   addProduto(produto: Produto) {
-    return this.produtosCollection.add(produto);
+    return this.produtosCollection.add({ ...produto });
   }
 
   removeProduto(id) {

@@ -22,7 +22,6 @@ import { ProdutoModule } from './pages/produto/produto.module';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    ProdutoModule
   ],
   providers: [
     StatusBar,

@@ -1,6 +1,6 @@
 <ion-header>
-  <ion-toolbar color="primary">
-    <ion-buttons>
+  <ion-toolbar color="primary" mode="ios">
+    <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title>Produtos</ion-title>
@@ -10,7 +10,7 @@
 <ion-content>
   <ion-list>
     <ion-item-sliding *ngFor="let item of produtos">
-      <ion-item lines="inset" button (click)="openPage('/produtos/edit'+ item.id)">
+      <ion-item lines="inset" button (click)="openPage('/produtos/edit/'+ item.id)">
         <ion-label>
           {{item.nome}}
         </ion-label>

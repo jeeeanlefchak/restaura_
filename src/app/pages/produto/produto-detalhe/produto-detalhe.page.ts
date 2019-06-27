@@ -35,13 +35,22 @@ export class ProdutoDetalhePage implements OnInit {
       this.categorias = categorias.sort((a: Categoria, b: Categoria) => {
         return a.nome > b.nome ? -1 : 1;
       });
+      this.setCategoriaInProduto();
     })
+
   }
 
   get() {
     this.produtSerivce.getProduto(this.produtoId).subscribe(res => {
       this.produto = res;
+      this.setCategoriaInProduto();
     })
+  }
+
+  private setCategoriaInProduto() {
+    if (this.categorias && this.produto) {
+      this.categoria = this.categorias.find(c => c.id == this.produto.categoriaId);
+    }
   }
 
   save() {

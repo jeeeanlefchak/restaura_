@@ -25,6 +25,8 @@ export class CategoriaListaPage implements OnInit {
   getAllCategoria() {
     this.categoriaService.getCategorias().subscribe(res => {
       this.categorias = res;
+    },error=>{
+      console.log(error);
     });
   }
 
