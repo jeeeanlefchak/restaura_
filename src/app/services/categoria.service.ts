@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { Storage } from '@ionic/storage';
+import { Injectable, Inject } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 
 import { Observable } from 'rxjs';
@@ -14,7 +15,7 @@ export class CategoriaService {
   private categoria: Observable<Categoria[]>;
 
 
-  constructor(db: AngularFirestore) {
+  constructor(db: AngularFirestore, @Inject('categoria') private storgeCategoria: Storage) {
     this.categoriasCollection = db.collection<Categoria>('Categoria');
 
     this.categoria = this.categoriasCollection.snapshotChanges().pipe(
@@ -48,4 +49,51 @@ export class CategoriaService {
     return this.categoriasCollection.doc(id).delete();
   }
 
+  // storge
+
+  addLocalCategoria(categoria: Categoria) {
+    this.getCategorias().subscribe((categorias: Categoria[]) => {
+      categorias.push(categoria);
+      this.storgeCategoria.set('categoria', categorias).then();
+      return categorias;
+    });
+  }
+
+  removeLocalAll(): boolean {
+    this.storgeCategoria.clear().then();
+    return true;
+  }
+
+  removeLocal(categoriaId: number): boolean {
+    this.getCategorias().subscribe((categorias: Categoria[]) => {
+      let index = categorias.findIndex(x => x.id == categoriaId);
+      if (index >= 0) {
+        categorias.splice(index, 1);
+      } else {
+        return null
+      };
+      this.storgeCategoria.set('categoria', categorias).then();
+      return true;
+    });
+    return true;
+  }
+
+  getLocal(): Categoria[] {
+    var promise = new Promise<Categoria[]>((resolve, reject) => {
+      this.storgeCategoria.get('categoria').then(categorias => {
+        resolve(categorias);
+      })
+    })
+    return promise as any;
+  }
+
+  getLocalById(categoriaId: number): Categoria {
+    var promise = new Promise<Categoria>((resolve, reject) => {
+      this.storgeCategoria.get('categoria').then((categorias: Categoria[]) => {
+        let categoria = categorias.find(x => x.id == categoriaId)
+        resolve(categoria);
+      })
+    })
+    return promise as any;
+  }
 }

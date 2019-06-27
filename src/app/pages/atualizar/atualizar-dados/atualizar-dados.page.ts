@@ -1,4 +1,5 @@
-import { Component, OnInit, NgModule } from '@angular/core';
+import { Storage } from '@ionic/storage';
+import { Component, OnInit, NgModule, Inject } from '@angular/core';
 import { CategoriaService } from 'src/app/services/categoria.service';
 import { ActivatedRoute } from '@angular/router';
 import { NavController, IonicModule } from '@ionic/angular';
@@ -17,7 +18,7 @@ export class AtualizarDadosPage implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    
+
   }
 
 }
