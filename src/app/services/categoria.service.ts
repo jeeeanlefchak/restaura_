@@ -51,12 +51,14 @@ export class CategoriaService {
 
   // storge
 
-  addLocalCategoria(categoria: Categoria) {
-    this.getCategorias().subscribe((categorias: Categoria[]) => {
-      categorias.push(categoria);
-      this.storgeCategoria.set('categoria', categorias).then();
-      return categorias;
+  addLocalCategoria(listCategoria: Categoria[]) {
+    let categorias = this.getLocal();
+    if (!categorias) categorias = [];
+    listCategoria.forEach(c => {
+      categorias.push(c);
     });
+    this.storgeCategoria.set('categoria', categorias).then();
+    return categorias;
   }
 
   removeLocalAll(): boolean {
@@ -65,16 +67,15 @@ export class CategoriaService {
   }
 
   removeLocal(categoriaId: number): boolean {
-    this.getCategorias().subscribe((categorias: Categoria[]) => {
-      let index = categorias.findIndex(x => x.id == categoriaId);
-      if (index >= 0) {
-        categorias.splice(index, 1);
-      } else {
-        return null
-      };
-      this.storgeCategoria.set('categoria', categorias).then();
-      return true;
-    });
+    let categorias = this.getLocal();
+    let index = categorias.findIndex(x => x.id == categoriaId);
+    if (index >= 0) {
+      categorias.splice(index, 1);
+    } else {
+      return null
+    };
+    this.storgeCategoria.set('categoria', categorias).then();
+    return true;
     return true;
   }
 

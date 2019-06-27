@@ -8,5 +8,9 @@
 </ion-header>
 
 <ion-content>
-  
+  <ion-buttons>
+    <ion-button color="categorias?.length > 0 success : warning " (click)="updateCategories()">Atualizar Categorias
+      {{categorias?.length}}</ion-button>
+  </ion-buttons>
+
 </ion-content>

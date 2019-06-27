@@ -14,11 +14,23 @@ import { FormsModule } from '@angular/forms';
 })
 
 export class AtualizarDadosPage implements OnInit {
-
-  constructor() { }
+  loadingCategorias: boolean = false;
+  categorias: Categoria[] = [];
+  constructor(private categoriaService: CategoriaService) { }
 
   ngOnInit() {
 
+  }
+
+  async updateCategories() {
+    this.loadingCategorias = true;
+    debugger
+    await this.categoriaService.removeLocalAll();
+    await this.categoriaService.getCategorias().subscribe(async (categorias: Categoria[]) => {
+      let c: any = await this.categoriaService.addLocalCategoria(categorias);
+      this.categorias = c;
+      this.loadingCategorias = false;
+    })
   }
 
 }
